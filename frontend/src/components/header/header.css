@@ -1,0 +1,16 @@
+.header-div {
+    background-color: #2874f0 !important;
+    
+}
+
+
+
+#navbarScrollingDropdown {
+    color: #f0f0f0;
+}
+
+.profile-dropdown {
+    display: flex;
+    align-items: center;
+  }
+
