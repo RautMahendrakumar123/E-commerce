@@ -2,60 +2,43 @@ import React from 'react'
 import './filter.css'
 
 const FilterList = [
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/38a459d6d1fc930a.png?q=100",
-        title: "Mobiles and tablet"
-    },
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/629b0a6f61037ae6.png?q=100",
-        title: "TV and Electronics"
-    },
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/f2802fac96dffea9.png?q=100",
-        title: "Sports"
-    },
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/38a459d6d1fc930a.png?q=100",
-        title: "Mens"
-    },
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/38a459d6d1fc930a.png?q=100",
-        title: "Womens"
-    },
-    {
-        img: "https://rukminim1.flixcart.com/fk-p-flap/80/80/image/38a459d6d1fc930a.png?q=100",
-        title: "sports"
-    },
-]
+
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100', text: 'Grocery' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100', text: 'Mobile' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100', text: 'Fashion' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100', text: 'Electronics' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/ee162bad964c46ae.png?q=100', text: 'Home' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100', text: 'Appliances' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100', text: 'Beauty, Toys & More' }
+];
+
+// export const bannerData = [
+//     { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },
+//     { id: 2, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50' },
+//     { id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50' },
+//     { id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50' }
+// ]
+
 
 const Filter = () => {
     return (
-        <div className='main-container'>
-            <div className='container'>
-                <div></div>
-                {/* <div className='filter-card'>
-                    <div><img src='https://rukminim1.flixcart.com/fk-p-flap/80/80/image/38a459d6d1fc930a.png?q=100' /></div>
-                    <div>Mobiles and Tablets</div>
-                </div> */}
-                {
-                    FilterList.map((item)=>(
-                        <div className='filter-card'>
-                    <div><img src={item.img} /></div>
-                    <div>{item.title}</div>
-                </div>
-                    ))
-                }
+        <div className='container'>
+            <div className='filter-card'></div>
+            {
+                FilterList.map((item) => (
+                    <div className='filter-card' key={item.url}>
 
-                <div></div>
-            </div>
+                        <div className='img-container'><img src={item.url} className='img'/></div>
+                        <div>{item.text}</div>
+
+                    </div>
+                ))
+            }
+
+            <div className='filter-card'></div>
         </div>
+
     )
 }
-
-{/* <div>TV and Electronics</div>
-<div>sport</div>
-<div>Mens wear</div>
-<div>womens wear</div>
-<div>books</div> */}
 
 export default Filter

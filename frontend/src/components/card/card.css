@@ -1,0 +1,16 @@
+
+
+.card {
+    width: 160px;
+    margin: 10px;
+    text-align: center;
+}
+.card p {
+margin: 6px 0px;
+
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 0.6sec;
+}

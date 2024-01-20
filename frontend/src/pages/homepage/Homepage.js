@@ -1,11 +1,19 @@
 import React from 'react'
+import './homepage.css'
 import Filter from '../../components/bigfilter/Filter'
+import CarouselComp from '../../components/carouselcomp/CarouselComp'
 
 const Homepage = () => {
   return (
-    <div>
+    <div className='home-container'>
+      <div>
       <Filter />
-      homepage
+      </div>
+      <div>
+      <CarouselComp />
+      </div>
+      
+      
     </div>
   )
 }

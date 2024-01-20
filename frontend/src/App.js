@@ -5,7 +5,7 @@ import Header from './components/header/Header';
 import Homepage from './pages/homepage/Homepage';
 import Footer from './components/footer/Footer';
 import Cartpage from './pages/cart/Cartpage';
-import PageNotFound from './components/pagenotfound/PageNotFound';
+import PageNotFound from './pages/pagenotfound/PageNotFound'
 import ProfilePage from './pages/profile/ProfilePage';
 import OrderPage from './pages/orders/OrderPage';
 
