@@ -26,7 +26,7 @@ const registerController = async (req, res) => {
                 password: hashpass
             })
             await user.save()
-            res.status(200).send({
+            res.status(200).json({
                 message: 'user registered',
                 user
             })
@@ -71,7 +71,7 @@ const adminRegisterController = async (req, res) => {
 
         await user.save();
 
-        res.status(200).send({
+        res.status(200).json({
             message: 'User registered',
             user,
         });
@@ -96,7 +96,7 @@ const loginController = async (req, res) => {
                 res.status(403).send('password does not match')
             } else {
                 const token = jwt.sign({ userId: existingUser._id }, process.env.secretSTR)
-                res.status(200).send({token:token})
+                res.status(200).json({token:token})
             }
         }
 
