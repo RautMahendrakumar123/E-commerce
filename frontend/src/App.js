@@ -8,6 +8,7 @@ import Cartpage from './pages/cart/Cartpage';
 import PageNotFound from './pages/pagenotfound/PageNotFound'
 import ProfilePage from './pages/profile/ProfilePage';
 import OrderPage from './pages/orders/OrderPage';
+import SinglePostPage from './pages/singlepostpage/SinglePostPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/cart' element={<Cartpage />} />
             <Route path='/profile' element={<ProfilePage />} />
             <Route path='/order' element={<OrderPage />} />
+            <Route path='/singlepost' element={<SinglePostPage />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </div>
