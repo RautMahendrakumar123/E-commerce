@@ -1,0 +1,12 @@
+
+.footer {
+background-color: rgb(23, 35, 55);
+margin-top: 20px;
+text-align: center;
+color: wheat;
+padding: 5px;
+}
+.footer-cont {
+    max-width:1200px ;
+    margin: 0 auto;
+}

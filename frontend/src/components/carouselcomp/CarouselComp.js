@@ -24,7 +24,7 @@ const CarouselComp = () => {
         }
       };
   return (
-    <div>
+    <div style={{width:'90%', margin:'0 auto'}}>
       <Carousel responsive={responsive}
         swipeable={false}
         draggable={false}

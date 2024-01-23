@@ -20,7 +20,7 @@ const Header = () => {
       <Navbar expand='lg'>
         <Container fluid>
           <Link to="/" style={{ textDecoration: 'none' }}><Navbar.Brand  className='text-white'>
-            <SiFlipkart style={{ fontSize: '24px' }} /> Flipkart
+            <SiFlipkart style={{ fontSize: '24px' }} /> Shopper
           </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls='navbarScroll' />
@@ -41,7 +41,7 @@ const Header = () => {
                 <NavDropdown.Divider />
                 <NavDropdown.Item><AiOutlineLogout />  Logout</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link><Link to="/cart"  className='text-white' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /></Link></Nav.Link>
+              <Nav.Link><Link to="/cart"  className='text-white cart' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /><span className='count'>5</span></Link></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

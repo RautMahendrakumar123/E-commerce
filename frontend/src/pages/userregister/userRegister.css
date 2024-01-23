@@ -1,0 +1,45 @@
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px);
+  }
+  
+  .register {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    border: 0.5px solid rgb(105, 98, 98);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: black;
+  }
+  
+  .register-div {
+    margin-bottom: 15px;
+  }
+  
+  .register-div input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  /* Add responsive styles if needed */
+  @media (max-width: 600px) {
+    .register {
+      width: 90%;
+    }
+  }
+  

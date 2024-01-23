@@ -1,6 +1,5 @@
 .header-div {
     background-color: #2874f0 !important;
-    
 }
 
 
@@ -14,3 +13,17 @@
     align-items: center;
   }
 
+  .cart {
+    position: relative;
+}
+
+.count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #cb2f2f;
+    color: #ffffff;
+    font-size: 10px; 
+    padding: 2px 4px; 
+    border-radius: 50%;
+}

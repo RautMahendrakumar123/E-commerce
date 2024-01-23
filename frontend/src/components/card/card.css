@@ -6,9 +6,13 @@
     text-align: center;
 }
 .card p {
-margin: 6px 0px;
+margin: 3px 0px;
 
 }
+.card div {
+    margin: 3px 0px;
+    
+    }
 
 .card:hover {
     transform: scale(1.05);
