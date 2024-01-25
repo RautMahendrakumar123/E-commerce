@@ -18,17 +18,36 @@ const UserRegisterPage = () => {
 
   const navigate = useNavigate()
 
-  const handleChange = (e)=>{
-    setFormData((prevformdata)=>({
-      ...prevformdata,
-      [e.target.name]:e.target.value
-    }))
-  }
+  const handleChange = (e) => {
+    if (e.target.name === 'image') {
+      setFormData((prevformdata) => ({
+        ...prevformdata,
+        [e.target.name]: e.target.files[0],
+      }));
+    } else {
+      setFormData((prevformdata) => ({
+        ...prevformdata,
+        [e.target.name]: e.target.value,
+      }));
+    }
+  };
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/register',formData)
+      const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('contact', formData.contact);
+    formDataToSend.append('password', formData.password);
+    formDataToSend.append('cpassword', formData.cpassword);
+    formDataToSend.append('image', formData.image);
+
+      const response = await axios.post('http://localhost:5000/api/v1/register',formDataToSend,{
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
       if(response){
         navigate('/login')
         setFormData({
@@ -45,11 +64,10 @@ const UserRegisterPage = () => {
     }
   }
 
-  console.log(formData)
 
   return (
     <div className='register-container'>
-      <form className='register' onSubmit={handleSubmit}>
+      <form className='register' onSubmit={handleSubmit}  encType="multipart/form-data">
         <div className='register-div'>
           <input type='text' placeholder='Name' name='name' value={formData.name} onChange={handleChange}/>
         </div>
@@ -66,7 +84,7 @@ const UserRegisterPage = () => {
           <input type='password' placeholder='confirm Password' name='cpassword' value={formData.cpassword} onChange={handleChange}/>
         </div>
         <div className='register-div'>
-          <input type='file' placeholder='Add a file' name='image' value={formData.image} onChange={handleChange}/>
+          <input type='file' placeholder='Add a file' name='image' onChange={handleChange}/>
         </div>
         <div className='register-div button'>
           <div>

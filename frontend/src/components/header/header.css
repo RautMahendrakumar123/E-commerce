@@ -27,3 +27,8 @@
     padding: 2px 4px; 
     border-radius: 50%;
 }
+
+.loginbtn{
+    background-color: #ffffff !important;
+    color: black !important;
+}

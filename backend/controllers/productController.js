@@ -1,29 +1,39 @@
 const productModel = require("../models/productModel");
+const upload = require('../middlewares/multer')
 
 
-
-const addProduct = async(req,res)=>{
+const addProduct = async (req, res) => {
     try {
-        const {productname,image,desc,price,category,special} = req.body;
-        if(!productname || !image || !desc || !price || !category){
-            res.status(401).send('fill all the details');
-        }
-        const Product = await new productModel({
-            productname,
-            image,
-            desc,
-            price,
-            category,
-            special
-        })
-        await Product.save();
-        res.status(200).send('product created succefully');
+        upload.single('image')(req, res, async function (err) {
+            if (err instanceof multer.MulterError) {
+                return res.status(500).json({ message: 'Error uploading image' });
+            } else if (err) {
+                return res.status(500).json({ message: 'Unknown error uploading image' });
+            }
 
+            const { productname, desc, price, category, special } = req.body;
+
+            if (!productname || !req.file || !desc || !price || !category) {
+                return res.status(400).send('Fill in all the details, including the image');
+            }
+
+            const Product = await new productModel({
+                productname,
+                image: req.file.filename,
+                desc,
+                price,
+                category,
+                special
+            });
+
+            await Product.save();
+            res.status(200).send('Product created successfully');
+        });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ message: 'Server Error' });
     }
-}
+};
 
 const getProducts = async(req,res)=>{
     try {

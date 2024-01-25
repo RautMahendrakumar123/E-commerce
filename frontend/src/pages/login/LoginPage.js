@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import {include} from '../../store/userSlice';
 
 const LoginPage = () => {
 
@@ -13,6 +15,7 @@ const LoginPage = () => {
   })
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     setFormData((prevformdata) => ({
@@ -26,7 +29,15 @@ const LoginPage = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/login', formData)
       if (response) {
-        navigate('/')
+        // localStorage.setItem('user',JSON.stringify(response.data.user))
+        localStorage.setItem('token',response.data.token)
+        console.log(response)
+        if(response.data){
+          dispatch(include(response))
+        }
+        setTimeout(() => {
+          navigate('/')
+        }, 1000);
         setFormData({
           email: '',
           password: ''
