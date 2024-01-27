@@ -135,4 +135,9 @@ const loginController = async (req, res) => {
 
 }
 
-module.exports = { registerController, loginController, adminRegisterController }
+
+const privateRoute = (req,res)=>{
+    res.status(200).json({ok:true})
+}
+
+module.exports = { registerController, loginController, adminRegisterController, privateRoute }

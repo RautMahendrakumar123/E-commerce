@@ -12,7 +12,7 @@ const ProfilePage = () => {
     <div className='profile-page'>
       <div className='profile-container'>
         <div className='image-container'>
-          <img src={user_data.image? user_data.image:profileimage} alt='profile'/>
+          <img src={user_data.image?`http://localhost:5000/uploads/${user_data.image}`:profileimage} alt='profile'/>
         </div>
         <div className='usertext-container'>
           <p className='profile-subtext'>name :</p>

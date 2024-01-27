@@ -1,5 +1,6 @@
 const express = require('express');
 const { addProduct, getProducts, getProduct, updateProduct, deleteProduct, getProductByCategory, getSpecialProduct } = require('../controllers/productController');
+// const isUser = require('../middlewares/ifUser');
 const router = express.Router();
 
 
