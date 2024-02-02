@@ -28,7 +28,7 @@ function App() {
             <Route path='/' element={<Homepage />} />
             <Route path='/dashboard' element={<Private />}>
               <Route path='' element={<DashBoard />}/>
-              <Route path='/upload' element={<UploadProduct />}/>
+              <Route path='upload' element={<UploadProduct />}/>
             </Route>
             <Route path='/register-user' element={<UserRegisterPage />} />
             <Route path='/register-admin' element={<AdminRegisterPage />} />

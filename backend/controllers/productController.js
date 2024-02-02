@@ -1,5 +1,6 @@
 const productModel = require("../models/productModel");
-const upload = require('../middlewares/multer')
+const upload = require('../middlewares/multer');
+const multer = require("multer");
 
 
 const addProduct = async (req, res) => {
@@ -23,7 +24,7 @@ const addProduct = async (req, res) => {
                 desc,
                 price,
                 category,
-                special
+                special: special === 'true'
             });
 
             await Product.save();
@@ -35,22 +36,32 @@ const addProduct = async (req, res) => {
     }
 };
 
-const getProducts = async(req,res)=>{
+const getProducts = async (req, res) => {
     try {
-        const products = await productModel.find();
-        res.json(products);
+        const page = parseInt(req.query.page) || 1;
+        const pageSize = parseInt(req.query.limit) || 12;
+        const skip = (page - 1) * pageSize;
+        const products = await productModel.find().skip(skip).limit(pageSize);
+        const totalProducts = await productModel.countDocuments();
+
+        res.json({
+            products,
+            totalPages: Math.ceil(totalProducts / pageSize),
+            currentPage: page,
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Server Error' });
     }
-}
+};
 
-const getProductByCategory = async(req,res)=>{
+
+const getProductByCategory = async (req, res) => {
     try {
         const category = req.params.category;
-        const products = await productModel.find({category});
-        if(products.length===0){
-            return res.status(404).json({message:'no prouct found for this category'})
+        const products = await productModel.find({ category });
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'no prouct found for this category' })
         }
         res.json(products);
     } catch (error) {
@@ -59,9 +70,9 @@ const getProductByCategory = async(req,res)=>{
     }
 }
 
-const getProduct = async(req,res)=>{
+const getProduct = async (req, res) => {
     try {
-        
+
         const product = await productModel.findById(req.params.id);
         res.json(product);
     } catch (error) {
@@ -70,11 +81,11 @@ const getProduct = async(req,res)=>{
     }
 }
 
-const getSpecialProduct = async(req,res)=>{
+const getSpecialProduct = async (req, res) => {
     try {
-        const specialproduct = await productModel.find({special:true});
-        if(specialproduct.length===0){
-            return res.status(404).json({message:'products not found'});
+        const specialproduct = await productModel.find({ special: true });
+        if (specialproduct.length === 0) {
+            return res.status(404).json({ message: 'products not found' });
         }
         res.json(specialproduct)
     } catch (error) {
@@ -83,34 +94,34 @@ const getSpecialProduct = async(req,res)=>{
     }
 }
 
-const updateProduct = async(req,res)=>{
+const updateProduct = async (req, res) => {
     try {
-        const {productname,image,desc,price,category,special} = req.body;
+        const { productname, image, desc, price, category, special } = req.body;
         const updatedproduct = await productModel.findByIdAndUpdate(req.params.id,
-            {productname,image,desc,price,category,special},
-            {new:true})
-            if(!updatedproduct){
-                return res.status(404).json({message:'product not found'})
-            }
-            res.json(updatedproduct)
+            { productname, image, desc, price, category, special },
+            { new: true })
+        if (!updatedproduct) {
+            return res.status(404).json({ message: 'product not found' })
+        }
+        res.json(updatedproduct)
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Server Error' });
     }
 }
 
-const deleteProduct = async(req,res)=>{
+const deleteProduct = async (req, res) => {
     try {
         const deletedproduct = await productModel.findByIdAndDelete(req.params.id);
-        if(!deletedproduct){
-            return res.status(404).json({message:'product not found'})
+        if (!deletedproduct) {
+            return res.status(404).json({ message: 'product not found' })
         }
-        res.json({message:'product deleted successfully'})
+        res.json({ message: 'product deleted successfully' })
     } catch (error) {
         console.log(error);
-        res.status(500).json({message:'Server Error'})
+        res.status(500).json({ message: 'Server Error' })
     }
 }
 
 
-module.exports = { addProduct, getProducts, getProduct, updateProduct,deleteProduct, getProductByCategory, getSpecialProduct}
+module.exports = { addProduct, getProducts, getProduct, updateProduct, deleteProduct, getProductByCategory, getSpecialProduct }

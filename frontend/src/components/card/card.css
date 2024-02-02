@@ -1,20 +1,40 @@
-
-
-.card {
-    width: 160px;
-    margin: 10px;
-    text-align: center;
+.card-container {
+    width: 175px;
+    padding: 0.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(121, 117, 117);
 }
-.card p {
-margin: 3px 0px;
 
+.img-container {
+    width: 150px;
+    height: 150px;
 }
-.card div {
-    margin: 3px 0px;
-    
-    }
 
-.card:hover {
+.img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3em;
+}
+
+.card-btn {
+    padding: 0.5em;
+    background-color: rgb(48, 45, 45);
+    color: white;
+    border: none;
+}
+
+.card-container:hover {
     transform: scale(1.05);
-    transition: 0.6sec;
+    transition: 0.4s;
 }

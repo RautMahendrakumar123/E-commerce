@@ -1,0 +1,30 @@
+.upload-container {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  .upload-form {
+    width: 25em;
+    height: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+border: 0.5px solid black;
+  }
+  
+  .upload-form input,
+  .upload-form label {
+    margin-bottom: 1rem;
+    width: 70%;
+  }
+  
+  .upload-form select {
+    width: 100%;
+  }
+  
+

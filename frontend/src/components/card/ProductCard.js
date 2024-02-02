@@ -1,21 +1,24 @@
-import React from 'react'
-import './card.css'
-import Button from 'react-bootstrap/Button';
+import React from 'react';
+import './card.css';
 
 
-     {/* https://images.pexels.com/photos/733860/pexels-photo-733860.jpeg */}
+const ProductCard = ({ product }) => {
+  if (!product || !product.image) {
+    return null; 
+  }
 
-      {/* https://images.pexels.com/photos/1820563/pexels-photo-1820563.jpeg?auto=compress&cs=tinysrgb&w=600 */}
-
-const ProductCard = () => {
   return (
-    <div className='card'>
-      <img src='https://images.pexels.com/photos/1820563/pexels-photo-1820563.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' />
-      <p>Title</p>
-      <div className='card-prices'>price:50rs</div>
-      <div><Button variant="primary" className='btn'>Add to Cart</Button></div>
-    </div>
-  )
-}
+    <div className='card-container'>
+            <div className='img-container'>
+                <img src={`http://localhost:5000/uploads/${product.image}`} alt={product.productname} />
+            </div>
+            <div className='text-container'>
+                <div>{product.productname}</div>
+                <div>Rs. {product.price}</div>
+                <button className='card-btn'>Add to Cart</button>
+            </div>
+        </div>
+  );
+};
 
-export default ProductCard
+export default ProductCard;

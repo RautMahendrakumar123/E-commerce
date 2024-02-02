@@ -10,7 +10,7 @@ router.get('/products',getProducts);
 router.get('/product/:id',getProduct);
 router.get('/products/:category',getProductByCategory);
 router.get('/products/special/true',getSpecialProduct);
-router.post('/product',addProduct);
+router.post('/upload',addProduct);
 router.put('/product/:id',updateProduct);
 router.delete('/product/:id',deleteProduct);
 
