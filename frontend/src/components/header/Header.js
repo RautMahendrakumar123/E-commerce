@@ -12,15 +12,15 @@ import Button from 'react-bootstrap/Button';
 import './header.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import {  useDispatch } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../store/userSlice';
 
 const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-
+const data = useSelector(state=>state.cart)
+console.log(data.length)
   const handleLogout = ()=>{
     localStorage.removeItem('token');
     dispatch(remove())
@@ -63,7 +63,7 @@ const Header = () => {
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}><AiOutlineLogout />  Logout</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link><Link to="/cart"  className='text-white cart' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /><span className='count'>5</span></Link></Nav.Link>
+              <Nav.Link><Link to="/cart"  className='text-white cart' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /><span className='count'>{data.length? data.length:0}</span></Link></Nav.Link>
             </Nav>
               </> 
             }

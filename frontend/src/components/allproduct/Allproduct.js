@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './allproduct.css';
 import ProductCard from '../card/ProductCard';
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProduct } from '../../store/productSlice';
 
 const Allproduct = () => {
   const [products, setProducts] = useState([]);
@@ -9,12 +11,19 @@ const Allproduct = () => {
   const [totalPages, setTotalPages] = useState(1);
   const pageSize = 12;
 
+  const dispatch = useDispatch()
+  
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/v1/products?page=${currentPage}&limit=${pageSize}`);
-        setProducts(response.data.products);
-        setTotalPages(response.data.totalPages);
+        if(response) {
+          dispatch(setProduct(response.data.products))
+          setProducts(response.data.products);
+          setTotalPages(response.data.totalPages);
+        }
+     
       } catch (error) {
         console.error('Error fetching products:', error);
       }

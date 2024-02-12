@@ -3,6 +3,7 @@ import './upload.css'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {toast} from 'react-toastify'
 
 const UploadProduct = () => {
 
@@ -48,6 +49,7 @@ const UploadProduct = () => {
             })
             if(response){
                 // navigate('/')
+                toast.success('Product Added')
                 setFormData({
                     productname:"",
                     image:"",
@@ -60,6 +62,7 @@ const UploadProduct = () => {
                 console.log(response)
             }
         } catch (error) {
+            toast.error('Something Went Wrong')
             console.log(error)
         }
         

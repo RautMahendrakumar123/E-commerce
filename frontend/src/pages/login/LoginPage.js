@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import {include} from '../../store/userSlice';
+import {toast} from 'react-toastify'
 
 const LoginPage = () => {
 
@@ -31,9 +32,9 @@ const LoginPage = () => {
       if (response) {
         // localStorage.setItem('user',JSON.stringify(response.data.user))
         localStorage.setItem('token',response.data.token)
-        console.log(response)
         if(response.data){
           dispatch(include(response))
+          toast.success('Login Successfull')
         }
         setTimeout(() => {
           navigate('/')
@@ -44,6 +45,7 @@ const LoginPage = () => {
         })
       }
     } catch (error) {
+      toast.error('Something Went Wrong')
       console.log(error)
     }
   }

@@ -2,7 +2,7 @@
     
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .profile-container {
@@ -43,4 +43,18 @@
 .profile-subtext {
     font-size: 14px;
     color: rgb(104, 103, 103);
+}
+
+.private-btns {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.private-btn {
+width: 150px;
+height: 75px;
+background-color: black;
+color: white;
+margin-top: 20px;border: none;
 }

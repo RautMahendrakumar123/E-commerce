@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AdminRegisterPage = () => {
 
@@ -32,6 +33,7 @@ const AdminRegisterPage = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/adminregister', formData)
       if (response) {
+        toast.success('Registered Successfully')
         navigate('/login')
         setFormData({
           question:'',
@@ -44,6 +46,7 @@ const AdminRegisterPage = () => {
         })
       }
     } catch (error) {
+      toast.error('Something Went Wrong')
       console.log(error)
     }
   }

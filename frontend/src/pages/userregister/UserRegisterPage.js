@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './userRegister.css';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const UserRegisterPage = () => {
 
@@ -49,6 +50,7 @@ const UserRegisterPage = () => {
         },
       })
       if(response){
+        toast.success('Registered Successfully')
         navigate('/login')
         setFormData({
           name: '',
@@ -60,6 +62,7 @@ const UserRegisterPage = () => {
         })
       }
     } catch (error) {
+      toast.error('Something Went Wrong')
       console.log(error)
     }
   }

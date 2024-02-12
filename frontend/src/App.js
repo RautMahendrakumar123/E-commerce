@@ -14,13 +14,15 @@ import LoginPage from './pages/login/LoginPage'
 import Private from './private/Private';
 import DashBoard from './pages/dashboard/DashBoard'
 import UploadProduct from './pages/uploadProduct/UploadProduct';
-
-
+import GetAllUsers from './pages/get users/GetAllUsers';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   return (
     <BrowserRouter>
+    <ToastContainer />
       <div className="app-container">
         <Header />
         <div className="main-content">
@@ -29,13 +31,14 @@ function App() {
             <Route path='/dashboard' element={<Private />}>
               <Route path='' element={<DashBoard />}/>
               <Route path='upload' element={<UploadProduct />}/>
+              <Route path='getusers' element={<GetAllUsers />}/>
             </Route>
             <Route path='/register-user' element={<UserRegisterPage />} />
             <Route path='/register-admin' element={<AdminRegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/cart' element={<Cartpage />} />
             <Route path='/profile' element={<ProfilePage />} />
-            <Route path='/singlepost' element={<SinglePostPage />} />
+            <Route path='/singlepost/:productId' element={<SinglePostPage />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </div>
