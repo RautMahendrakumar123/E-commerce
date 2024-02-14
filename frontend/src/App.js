@@ -17,6 +17,8 @@ import UploadProduct from './pages/uploadProduct/UploadProduct';
 import GetAllUsers from './pages/get users/GetAllUsers';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Search from './components/search/Search';
+import FilterResult from './pages/filterresult/FilterResult';
 
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
             <Route path='/cart' element={<Cartpage />} />
             <Route path='/profile' element={<ProfilePage />} />
             <Route path='/singlepost/:productId' element={<SinglePostPage />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/filter-result' element={<FilterResult />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </div>

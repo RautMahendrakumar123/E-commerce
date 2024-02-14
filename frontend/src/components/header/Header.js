@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {  useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../store/userSlice';
+import Search from '../search/Search';
 
 const Header = () => {
 
@@ -39,14 +40,9 @@ console.log(data.length)
           </Link>
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse id='navbarScroll'>
-            <Form className='d-flex' style={{ width: '40%' }}>
-              <Form.Control
-                type='search'
-                placeholder='Search'
-                className='me-2'
-                aria-label='Search'
-              />
-            </Form>
+            <>
+              <Search />
+            </>
             {
               !localStorage.getItem('token') ?
               <>

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './filter.css'
+import axios from 'axios';
+import { useDispatch } from 'react-redux'
+import { addFilterProduct } from '../../store/filterSlice';
+import { useNavigate } from 'react-router-dom';
 
 const FilterList = [
 
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100', text: 'Groceries' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100', text: 'Mobile' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100', text: 'Fashion' },
-    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100', text: 'Laptops' },
+    { url: 'https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100', text: 'laptop' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/ee162bad964c46ae.png?q=100', text: 'Home' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100', text: 'Beauty and Toys' }
 ];
@@ -14,17 +18,24 @@ const FilterList = [
 
 
 const Filter = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const setClick = async(categoryName)=>{
+        const response = await axios.get(`http://localhost:5000/api/v1/products/${categoryName}`)
+        if(response){
+            dispatch(addFilterProduct(response.data))
+            navigate('/filter-result')
+        }
+    }
+
     return (
         <div className='container'>
             <div className='filter-card'></div>
             {
                 FilterList.map((item) => (
-                    <div className='filter-card' key={item.url}>
-
-                        
-                            <img src={item.url} className='img'/>
+                    <div className='filter-card' key={item.url} onClick={()=>{setClick(item.text)}}>
+                        <img src={item.url} className='img' />
                         {item.text}
-
                     </div>
                 ))
             }

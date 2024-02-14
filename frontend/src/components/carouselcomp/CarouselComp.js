@@ -19,7 +19,6 @@ const CarouselComp = () => {
     }
     FetchSpecialProduct()
   }, [])
-  console.log(specialProducts)
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
