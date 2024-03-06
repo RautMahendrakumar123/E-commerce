@@ -12,12 +12,15 @@ app.use('/uploads', express.static('uploads'));
 
 app.use('/api/v1',require('./routes/authRoute'))
 app.use('/api/v1',require('./routes/productRoute'))
+app.use('/api/v1',require('./routes/paymentRoute'))
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{console.log('connected to db')})
 .catch(err=>{
     console.log('error-'+err)
 })
+
+
 
 app.listen(process.env.PORT,()=>{
     console.log('server listeneing on port ' + process.env.PORT)

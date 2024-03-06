@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import './header.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import {  useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../store/userSlice';
 import Search from '../search/Search';
 
@@ -20,9 +20,9 @@ const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-const data = useSelector(state=>state.cart)
-console.log(data.length)
-  const handleLogout = ()=>{
+  const data = useSelector(state => state.cart)
+  console.log(data.length)
+  const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(remove())
     setTimeout(() => {
@@ -34,8 +34,8 @@ console.log(data.length)
     <div className='header-div'>
       <Navbar expand='lg'>
         <Container fluid>
-          <Link to="/" style={{ textDecoration: 'none' }}><Navbar.Brand  className='text-white'>
-          <FaShopify style={{fontSize:'24px'}}/> Shopper
+          <Link to="/" style={{ textDecoration: 'none' }}><Navbar.Brand className='text-white'>
+            <FaShopify style={{ fontSize: '24px' }} /> Shopper
           </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls='navbarScroll' />
@@ -45,25 +45,25 @@ console.log(data.length)
             </>
             {
               !localStorage.getItem('token') ?
-              <>
-              <Nav className='ms-auto'>
-               <Link to="/login"><Button variant='primary' className='btn loginbtn'>Login</Button></Link>
-               </Nav>
-              </> 
-              :
-              <>
-              <Nav className='ms-auto'>
-              <NavDropdown title="Mahendrakumar" id='navbarScrollingDropdown' style={{ color: 'white' }}>
-              
-                <NavDropdown.Item><Link to="/profile" style={{ textDecoration: 'none' }}><CgProfile /> Profile </Link></NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}><AiOutlineLogout />  Logout</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link><Link to="/cart"  className='text-white cart' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /><span className='count'>{data.length? data.length:0}</span></Link></Nav.Link>
-            </Nav>
-              </> 
+                <>
+                  <Nav className='ms-auto'>
+                    <Link to="/login"><Button variant='primary' className='btn loginbtn'>Login</Button></Link>
+                  </Nav>
+                </>
+                :
+                <>
+                  <Nav className='ms-auto'>
+                    <NavDropdown title="Mahendrakumar" id='navbarScrollingDropdown' style={{ color: 'white' }}>
+
+                      <NavDropdown.Item><Link to="/profile" style={{ textDecoration: 'none' }}><CgProfile /> Profile </Link></NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item onClick={handleLogout}><AiOutlineLogout />  Logout</NavDropdown.Item>
+                    </NavDropdown>
+                    <Nav.Link><Link to="/cart" className='text-white cart' style={{ textDecoration: 'none' }}>Cart <PiShoppingCartFill /><span className='count'>{data.length ? data.length : 0}</span></Link></Nav.Link>
+                  </Nav>
+                </>
             }
-            
+
           </Navbar.Collapse>
         </Container>
       </Navbar>

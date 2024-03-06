@@ -48,7 +48,7 @@ const UploadProduct = () => {
                   },
             })
             if(response){
-                // navigate('/')
+                navigate('/')
                 toast.success('Product Added')
                 setFormData({
                     productname:"",
@@ -76,7 +76,16 @@ console.log(formData)
                 <input type='file' placeholder=' Add a image' name='image' onChange={handleChnage}/>
                 <input type='text' placeholder='desc' name='desc' value={formData.desc} onChange={handleChnage}/>
                 <input type='text' placeholder='price' name='price' value={formData.price} onChange={handleChnage}/>
-                <input type='text' placeholder='category' name='category' value={formData.category} onChange={handleChnage}/>
+                <label>
+                    <select name='category' value={formData.category} onChange={handleChnage}>
+                        <option value='Mobile'>Mobile</option>
+                        <option value='Laptop'>Laptop</option>
+                        <option value='Groceries'>Groceries</option>
+                        <option value='Beauty and Toy'>Beauty and Toy</option>
+                        <option value='Home'>Home</option>
+                        <option value='Fashion'>Fashion</option>
+                    </select>
+                </label>
                 <label>
                     Special :-
                     <select name='special' value={formData.special} onChange={handleChnage}>
@@ -85,7 +94,7 @@ console.log(formData)
                     </select>
                 </label>
                 <div>
-                    <Button variant="primary" type='submit'>Primary</Button>
+                    <Button variant="primary" type='submit'>Upload</Button>
                 </div>
             </form>
         </div>

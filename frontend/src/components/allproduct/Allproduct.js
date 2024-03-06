@@ -45,6 +45,7 @@ const Allproduct = () => {
             <button
               onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
               disabled={currentPage === 1}
+              className='btn-btn'
             >
               Previous
             </button>
@@ -52,6 +53,8 @@ const Allproduct = () => {
             <button
               onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
               disabled={currentPage === totalPages}
+              className='btn-btn'
+
             >
               Next
             </button>

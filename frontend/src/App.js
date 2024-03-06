@@ -19,6 +19,8 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Search from './components/search/Search';
 import FilterResult from './pages/filterresult/FilterResult';
+import Success from './pages/payment-redirect/Success';
+import Failure from './pages/payment-redirect/Failure';
 
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
             <Route path='/singlepost/:productId' element={<SinglePostPage />} />
             <Route path='/search' element={<Search />} />
             <Route path='/filter-result' element={<FilterResult />} />
+            <Route path='/success' element={<Success />} />
+            <Route path='/cancel' element={<Failure />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </div>

@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const upload = require('../middlewares/multer');
 const multer = require('multer');
+const userModel = require('../models/authModel');
 
 const registerController = async (req, res) => {
     try {
@@ -20,7 +21,7 @@ const registerController = async (req, res) => {
                 return res.status(400).json({ message: 'No file uploaded' });
             }
 
-            const { name, email, contact, password, cpassword, image} = req.body;
+            const { name, email, contact, password, cpassword, image } = req.body;
 
             if (!name || !email || !contact || !password || !cpassword) {
                 return res.status(401).send('Fill in all the details');
@@ -116,12 +117,12 @@ const loginController = async (req, res) => {
             } else {
                 const token = jwt.sign({ userId: existingUser._id }, process.env.secretSTR)
                 res.status(200).json({
-                    user:{
-                        name:existingUser.name,
-                        email:existingUser.email,
-                        contact:existingUser.contact,
-                        image:existingUser.image,
-                        id:existingUser._id
+                    user: {
+                        name: existingUser.name,
+                        email: existingUser.email,
+                        contact: existingUser.contact,
+                        image: existingUser.image,
+                        id: existingUser._id
                     },
                     token
                 })
@@ -136,8 +137,17 @@ const loginController = async (req, res) => {
 }
 
 
-const privateRoute = (req,res)=>{
-    res.status(200).json({ok:true})
+const privateRoute = (req, res) => {
+    res.status(200).json({ ok: true })
 }
 
-module.exports = { registerController, loginController, adminRegisterController, privateRoute }
+const getUsersController = async (req,res) => {
+    try {
+        const result = await userModel.find()
+        res.send(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = { registerController, loginController, adminRegisterController, privateRoute, getUsersController }

@@ -9,9 +9,9 @@ const FilterResult = () => {
   return (
     <div className='filterProduct-container'>
        {
-        filterProducts.map((product)=>{
+       filterProducts ? filterProducts.map((product)=>{
            return <ProductCard key={product._id} product={product} />
-        })
+        }) : <>NO such product exist</>
       }
 
     </div>
