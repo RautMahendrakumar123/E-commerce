@@ -35,6 +35,7 @@ const SinglePostPage = () => {
         <div className='desc'>{data.desc}</div>
         <div className='price'>Rs. {data.price}</div>
         <div><Button variant="primary" className='btn'>Add to Cart</Button></div>
+        <div><Button variant="primary" className='btn'>Add to Cart</Button></div>
       </div>
     </div>
   );

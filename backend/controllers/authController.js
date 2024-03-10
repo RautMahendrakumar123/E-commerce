@@ -150,4 +150,18 @@ const getUsersController = async (req,res) => {
     }
 }
 
-module.exports = { registerController, loginController, adminRegisterController, privateRoute, getUsersController }
+
+const deleteUserController = async(req,res)=>{
+    try {
+        const userId = req.params.userId
+      const deletedUser =  await userModel.findByIdAndDelete(userId)
+       if (!deletedUser) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    res.status(200).json({ message: 'User deleted successfully' });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = { registerController, loginController, adminRegisterController, privateRoute, getUsersController, deleteUserController }

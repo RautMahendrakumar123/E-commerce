@@ -40,8 +40,10 @@ const ProductCard = ({ product }) => {
               </Link>
             </div>
             <div className='text-container'>
+            <div style={{padding:'5px'}}>
                 <div className='name-product'>{product.productname}</div>
                 <div>Rs. {product.price}</div>
+            </div>
                 <button className='card-btn' onClick={AddCart}>Add to Cart</button>
             </div>
         </div>

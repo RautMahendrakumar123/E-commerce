@@ -30,7 +30,7 @@ const LoginPage = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/login', formData)
       if (response) {
-        // localStorage.setItem('user',JSON.stringify(response.data.user))
+        localStorage.setItem('user',JSON.stringify(response.data.user))
         localStorage.setItem('token',response.data.token)
         if(response.data){
           dispatch(include(response))

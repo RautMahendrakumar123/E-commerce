@@ -21,6 +21,7 @@ import Search from './components/search/Search';
 import FilterResult from './pages/filterresult/FilterResult';
 import Success from './pages/payment-redirect/Success';
 import Failure from './pages/payment-redirect/Failure';
+import GetAllProducts from './pages/get products/GetAllProducts';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path='' element={<DashBoard />}/>
               <Route path='upload' element={<UploadProduct />}/>
               <Route path='getusers' element={<GetAllUsers />}/>
+              <Route path='getproducts' element={<GetAllProducts />}/>
             </Route>
             <Route path='/register-user' element={<UserRegisterPage />} />
             <Route path='/register-admin' element={<AdminRegisterPage />} />

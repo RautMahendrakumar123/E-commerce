@@ -1,0 +1,23 @@
+.userContainer {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.userContainer button {
+    background-color: rgb(194, 189, 189);
+    color: rgb(59, 58, 58);
+    border: 0.2px solid rgb(27, 27, 27);
+
+}
+
+.imgContainer {
+    width: 150px;
+    height: 75px;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

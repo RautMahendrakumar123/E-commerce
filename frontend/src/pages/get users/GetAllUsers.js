@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import User from './user/User'
+import './alluser.css'
 
 const GetAllUsers = () => {
   const [users, setUsers] = useState([])
@@ -19,14 +21,15 @@ const GetAllUsers = () => {
   }, [])
 console.log(users)
   return (
-    <div>
-      {/* {
+    <div className='AlluserContainer'>
+      {
         users && users.map((user)=>{
           return <>
-          {user.name}
+          <User userdata = {user}/>
           </>
         })
-      } */}
+      }
+
     </div>
   )
 }

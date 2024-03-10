@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import './header.css';
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../store/userSlice';
@@ -21,7 +21,11 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector(state => state.cart)
-  console.log(data.length)
+  // const user = useSelector(state=>state.user)
+  // console.log(data.length)
+  const storedUser = localStorage.getItem('user')
+  const user = storedUser ? JSON.parse(storedUser):null
+  console.log(user.name)
   const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(remove())
@@ -53,7 +57,7 @@ const Header = () => {
                 :
                 <>
                   <Nav className='ms-auto'>
-                    <NavDropdown title="Mahendrakumar" id='navbarScrollingDropdown' style={{ color: 'white' }}>
+                    <NavDropdown title={user.name} id='navbarScrollingDropdown' style={{ color: 'white',marginRight:'20px' }}>
 
                       <NavDropdown.Item><Link to="/profile" style={{ textDecoration: 'none' }}><CgProfile /> Profile </Link></NavDropdown.Item>
                       <NavDropdown.Divider />
