@@ -22,6 +22,7 @@ import FilterResult from './pages/filterresult/FilterResult';
 import Success from './pages/payment-redirect/Success';
 import Failure from './pages/payment-redirect/Failure';
 import GetAllProducts from './pages/get products/GetAllProducts';
+import UpdateProduct from './pages/get products/updateProduct/UpdateProduct';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path='/dashboard' element={<Private />}>
               <Route path='' element={<DashBoard />}/>
               <Route path='upload' element={<UploadProduct />}/>
+              <Route path='update/:id' element={<UpdateProduct />}/>
               <Route path='getusers' element={<GetAllUsers />}/>
               <Route path='getproducts' element={<GetAllProducts />}/>
             </Route>

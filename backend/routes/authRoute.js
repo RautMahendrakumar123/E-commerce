@@ -8,7 +8,7 @@ const isAdmin = require('../middlewares/ifAdmin')
 router.post('/register',registerController)
 router.post('/login',loginController)
 router.post('/adminregister',adminRegisterController)
-router.get('/user-auth',isUser,privateRoute)
+router.get('/user-auth',isUser,isAdmin,privateRoute)
 router.get('/getusers',getUsersController)
 router.delete('/deleteuser/:userId',deleteUserController)
 

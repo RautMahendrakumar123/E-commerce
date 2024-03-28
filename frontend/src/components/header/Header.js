@@ -25,7 +25,7 @@ const Header = () => {
   // console.log(data.length)
   const storedUser = localStorage.getItem('user')
   const user = storedUser ? JSON.parse(storedUser):null
-  console.log(user.name)
+  // console.log(user.name)
   const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(remove())

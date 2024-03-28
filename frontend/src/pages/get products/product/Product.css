@@ -1,0 +1,39 @@
+.product {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin: 10px 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.product-info {
+    margin-top: 10px;
+}
+
+.product-info div {
+    margin-bottom: 5px;
+}
+
+.product-info .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-info button {
+    width: 100%;
+    background-color: rgb(176, 77, 38);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+}

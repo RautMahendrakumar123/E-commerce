@@ -1,9 +1,30 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import Product from './product/Product'
+import './getallproduct.css'
 
 const GetAllProducts = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/v1/allProducts')
+        setProducts(response.data.products)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchProducts()
+  }, [])
+console.log(products)
   return (
-    <div>
-      all products
+    <div className='product-cont'>
+      {
+        products.map((product)=>{
+          return<> <Product key={product.id} data={product}/></>
+        })
+      }
     </div>
   )
 }

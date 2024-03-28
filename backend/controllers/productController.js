@@ -1,16 +1,11 @@
 const productModel = require("../models/productModel");
-const upload = require('../middlewares/multer');
 const multer = require("multer");
+const upload = require('../middlewares/multer');
 
 
 const addProduct = async (req, res) => {
     try {
-        upload.single('image')(req, res, async function (err) {
-            if (err instanceof multer.MulterError) {
-                return res.status(500).json({ message: 'Error uploading image' });
-            } else if (err) {
-                return res.status(500).json({ message: 'Unknown error uploading image' });
-            }
+
 
             const { productname, desc, price, category, special } = req.body;
 
@@ -29,7 +24,7 @@ const addProduct = async (req, res) => {
 
             await Product.save();
             res.status(200).send('Product created successfully');
-        });
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
@@ -55,6 +50,18 @@ const getProducts = async (req, res) => {
     }
 };
 
+const getAllProducts = async (req, res) => {
+    try {
+        const products = await productModel.find()
+
+        res.json({
+            products
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
 
 const getProductByCategory = async (req, res) => {
     try {
@@ -96,19 +103,29 @@ const getSpecialProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const { productname, image, desc, price, category, special } = req.body;
+
+        
+        const { productname, desc, price, category, special } = req.body; // Assuming image is handled separately (in req.file if using Multer)
+        
+        // Assuming image is handled separately (in req.file if using Multer)
         const updatedproduct = await productModel.findByIdAndUpdate(req.params.id,
-            { productname, image, desc, price, category, special },
-            { new: true })
+            { productname, desc, price, category, special },
+            { new: true }
+        );
+        
         if (!updatedproduct) {
-            return res.status(404).json({ message: 'product not found' })
+            return res.status(404).json({ message: 'Product not found' });
         }
-        res.json(updatedproduct)
+        res.json(updatedproduct);
+
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ message: 'Server Error' });
     }
 }
+
+
+
 
 const deleteProduct = async (req, res) => {
     try {
@@ -124,4 +141,4 @@ const deleteProduct = async (req, res) => {
 }
 
 
-module.exports = { addProduct, getProducts, getProduct, updateProduct, deleteProduct, getProductByCategory, getSpecialProduct }
+module.exports = { addProduct, getProducts, getProduct, updateProduct, deleteProduct, getProductByCategory, getSpecialProduct, getAllProducts}

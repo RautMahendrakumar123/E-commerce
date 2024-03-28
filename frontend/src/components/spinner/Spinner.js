@@ -3,7 +3,7 @@ import BootstrapSpinner from 'react-bootstrap/Spinner';
 import { useNavigate } from 'react-router-dom';
 
 const RedirectSpinner = () => {
-    const [count, setCount] = useState(10);
+    const [count, setCount] = useState(5);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const RedirectSpinner = () => {
             setCount((pre) => --pre);
         }, 1000);
 
-        count === 0 && navigate('/login');
+        count === 0 && navigate('/');
 
         return () => clearInterval(interval);
     }, [count, navigate]);

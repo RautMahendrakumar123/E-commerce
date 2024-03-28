@@ -2,11 +2,10 @@
 import React from 'react'
 import './profile.css'
 import profileimage from '../../image/noavatar.png'
-import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
 const ProfilePage = () => {
-  // const user_data = useSelector((state) => state.user)
+
   const storedUser = localStorage.getItem('user')
   const user = storedUser ? JSON.parse(storedUser):null
 

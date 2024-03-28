@@ -1,0 +1,29 @@
+.update-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+  }
+  
+  .update-form {
+    width: 25em;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+border: 0.5px solid black;
+  }
+  
+  .update-form input,
+  .update-form label {
+    margin-bottom: 1rem;
+    width: 70%;
+  }
+  
+  .update-form select {
+    width: 100%;
+  }
+  
+

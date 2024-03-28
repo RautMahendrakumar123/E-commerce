@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 3rem;
 }
 
 .profile-container {
@@ -13,6 +14,7 @@
     background-color: rgb(26, 26, 62);
     color: white;
     margin-top: 2em;
+    
 }
 
 .image-container {
@@ -54,7 +56,7 @@
 .private-btn {
 width: 150px;
 height: 75px;
-background-color: black;
+background-color: rgb(148, 98, 40);
 color: white;
 margin-top: 20px;border: none;
 }

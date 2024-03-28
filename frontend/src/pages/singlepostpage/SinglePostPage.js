@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './singlepost.css';
 import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { addProduct } from '../../store/cartSlice';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const SinglePostPage = () => {
   const { productId } = useParams()
   const [data,setData]=useState({})
+
+  const token = localStorage.getItem('token')
+  const dispatch = useDispatch()
 
   useEffect(()=>{
     const getProduct = async () => {
@@ -22,6 +28,21 @@ const SinglePostPage = () => {
     getProduct()
   },[productId])
   console.log(data)
+
+  const AddCart = (e)=>{
+    if(token){
+      dispatch(addProduct({
+        _id:data._id,
+        name:data.productname,
+        price:data.price,
+        category:data.category,
+        image: data.image
+      }))
+    }else{
+      toast.error('Please Login')
+      console.log('please login')
+    }
+  }
  
   return (
     <div className='main-container'>
@@ -34,8 +55,7 @@ const SinglePostPage = () => {
         <div className='title'>{data.productname}</div>
         <div className='desc'>{data.desc}</div>
         <div className='price'>Rs. {data.price}</div>
-        <div><Button variant="primary" className='btn'>Add to Cart</Button></div>
-        <div><Button variant="primary" className='btn'>Add to Cart</Button></div>
+        <div><Button variant="primary" className='btn' onClick={AddCart}>Add to Cart</Button></div>
       </div>
     </div>
   );
