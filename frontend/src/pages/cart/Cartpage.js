@@ -81,7 +81,7 @@ const Cartpage = () => {
             <hr />
             {token && (
               <div className='middle'>
-                <button className='btn btn-primary' onClick={handlePayment}>Checkout</button>
+                <button className={`btn btn-primary`} disabled={CheckoutPrice===0} onClick={handlePayment}>Checkout</button>
               </div>
             )}
           </div>

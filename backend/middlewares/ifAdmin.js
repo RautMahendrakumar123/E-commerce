@@ -1,26 +1,37 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const userModel = require('../models/authModel');
 
-const isAdmin = (req,res,next)=>{
-    if(!req.headers.authorization){
+const isAdmin = async(req, res, next) => {
+    if (!req.headers.authorization) {
         return res.status(401).json({
             message: 'You Must Be Logged In First'
         })
-      }
-      const token = req.headers.authorization;
-      jwt.verify(token,process.env.secretSTR, (err,payload)=>{
-        if(err){
-            return res.status(401).json({
-                message:'Unauthorized: Invalid Token'
-            })
-        }
-      })
-      const {role}=payload;
-      if(role!==1){
+    }
+
+    
+    const token = req.headers.authorization;
+    const decodedToken = jwt.verify(token, process.env.secretSTR);
+
+    const userId = decodedToken?.userId;
+
+    const user = await userModel.findById(userId);
+    if (!user) {
+        return res.status(404).json({
+            message: 'User not found'
+        });
+    }
+
+    if (user.role !== 1) {
         return res.status(403).json({
             message: 'Forbidden: You Must Be an Admin'
-        })
+        });
     }
+
+    req.userId = userId;
+    
     next();
+
+
 }
 
-module.exports=isAdmin
+module.exports = isAdmin

@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='footer'>
     <div className='footer-cont'>
         <p>&copy; 2024 Shopper E-commerce App</p>
-        <p>Contact us: Mahendra@gmail.com.com</p>
+        <p>Contact us: Mahendra@gmail.com</p>
     </div>
 </footer>
   )

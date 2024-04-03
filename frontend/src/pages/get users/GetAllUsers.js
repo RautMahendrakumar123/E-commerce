@@ -19,13 +19,13 @@ const GetAllUsers = () => {
     }
     fetchUser()
   }, [])
-console.log(users)
+  console.log(users)
   return (
     <div className='AlluserContainer'>
       {
         users && users.map((user)=>{
           return <>
-          <User userdata = {user}/>
+            <User userdata = {user}/>
           </>
         })
       }

@@ -6,7 +6,8 @@ const isUser = (req,res,next)=>{
         message: 'You Must Be Logged In First'
     })
   }
-  let token  = req.headers.authorization
+  const token = req.headers.authorization;
+  
   jwt.verify(token,process.env.secretSTR, (err,payload)=>{
     if(err){
         return res.status(401).json({
@@ -19,4 +20,4 @@ const isUser = (req,res,next)=>{
   })
 }
 
-module.exports = isUser
+module.exports = isUser;

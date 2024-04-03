@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import {toast} from 'react-toastify'
 
 
 const UpdateProduct = () => {
@@ -15,6 +16,7 @@ const UpdateProduct = () => {
     })
     const  {id}  = useParams()
 
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getProductById = async () => {
@@ -65,8 +67,11 @@ console.log(formData)
         try {
             const response = await axios.put(`http://localhost:5000/api/v1/product/update/${id}`, formDataToSend);
             console.log('Product updated:', response.data);
-            console.log(formDataToSend)
+            toast.success('product updated')
+            navigate('/dashboard/getproducts')
+
         } catch (error) {
+            toast.error('something went wrong')
             console.error('Error updating product:', error);
         }
     }

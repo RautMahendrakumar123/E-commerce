@@ -1,6 +1,4 @@
 const productModel = require("../models/productModel");
-const multer = require("multer");
-const upload = require('../middlewares/multer');
 
 
 const addProduct = async (req, res) => {
@@ -59,7 +57,7 @@ const getAllProducts = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'An error occurred while retrieving products' });
     }
 };
 
@@ -73,7 +71,7 @@ const getProductByCategory = async (req, res) => {
         res.json(products);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'An error occurred while retrieving products' });
     }
 }
 
@@ -81,10 +79,13 @@ const getProduct = async (req, res) => {
     try {
 
         const product = await productModel.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
         res.json(product);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'An error occurred while retrieving the product' });
     }
 }
 
@@ -92,12 +93,12 @@ const getSpecialProduct = async (req, res) => {
     try {
         const specialproduct = await productModel.find({ special: true });
         if (specialproduct.length === 0) {
-            return res.status(404).json({ message: 'products not found' });
+            return res.status(404).json({ message: 'Special products not found' });
         }
         res.json(specialproduct)
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'An error occurred while retrieving special products' });
     }
 }
 
@@ -105,9 +106,12 @@ const updateProduct = async (req, res) => {
     try {
 
         
-        const { productname, desc, price, category, special } = req.body; // Assuming image is handled separately (in req.file if using Multer)
+        const { productname, desc, price, category, special } = req.body; 
         
-        // Assuming image is handled separately (in req.file if using Multer)
+         if (!productname || !desc || !price || !category) {
+            return res.status(400).json({ message: 'Please provide productname, desc, price, and category' });
+        }
+
         const updatedproduct = await productModel.findByIdAndUpdate(req.params.id,
             { productname, desc, price, category, special },
             { new: true }
@@ -120,12 +124,9 @@ const updateProduct = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'An error occurred while updating the product' });
     }
 }
-
-
-
 
 const deleteProduct = async (req, res) => {
     try {
@@ -136,7 +137,7 @@ const deleteProduct = async (req, res) => {
         res.json({ message: 'product deleted successfully' })
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Server Error' })
+         res.status(500).json({ error: 'An error occurred while deleting the product' });
     }
 }
 

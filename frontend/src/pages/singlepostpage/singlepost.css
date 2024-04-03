@@ -36,11 +36,13 @@
   
   .title {
     font-size: 2em;
+    font-weight: bold;
     margin-bottom: 10px;
   }
   
   .desc {
     font-size: 1.2em;
+    color: rgb(87, 86, 86);
     margin-bottom: 20px;
   }
   

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaShopify } from "react-icons/fa";
 import { PiShoppingCartFill } from "react-icons/pi";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -15,17 +15,25 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../store/userSlice';
 import Search from '../search/Search';
+import { jwtDecode } from 'jwt-decode'
+import axios from 'axios'
 
 const Header = () => {
-
+  const [user, setUser] = useState({})
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector(state => state.cart)
-  // const user = useSelector(state=>state.user)
-  // console.log(data.length)
-  const storedUser = localStorage.getItem('user')
-  const user = storedUser ? JSON.parse(storedUser):null
-  // console.log(user.name)
+  const token = localStorage.getItem('token')
+  if (token) {
+    const decode = jwtDecode(token)
+    const id = decode.userId
+    const getUser = async () => {
+      const response = await axios.get(`http://localhost:5000/api/v1/getuser/${id}`)
+      setUser(response.data)
+    }
+    getUser()
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(remove())
@@ -50,14 +58,14 @@ const Header = () => {
             {
               !localStorage.getItem('token') ?
                 <>
-                  <Nav className='ms-auto'>
+                  <Nav className='ms-auto mb-2'>
                     <Link to="/login"><Button variant='primary' className='btn loginbtn'>Login</Button></Link>
                   </Nav>
                 </>
                 :
                 <>
                   <Nav className='ms-auto'>
-                    <NavDropdown title={user.name} id='navbarScrollingDropdown' style={{ color: 'white',marginRight:'20px' }}>
+                    <NavDropdown title={user.name} id='navbarScrollingDropdown' style={{ color: 'white', marginRight: '20px' }}>
 
                       <NavDropdown.Item><Link to="/profile" style={{ textDecoration: 'none' }}><CgProfile /> Profile </Link></NavDropdown.Item>
                       <NavDropdown.Divider />

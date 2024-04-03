@@ -1,9 +1,10 @@
 import React from 'react'
+import RedirectSpinner from '../../components/spinner/Spinner'
 
 const Failure = () => {
   return (
     <div>
-      cancel
+      <RedirectSpinner />
     </div>
   )
 }

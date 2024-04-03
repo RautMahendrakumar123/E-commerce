@@ -13,10 +13,11 @@ router.post('/create-checkout-session', async (req, res) => {
                 product_data: {
                     name: item.name,
                 },
-                unit_amount: item.price * 100 // Convert price to smallest currency unit (cents/paise)
+                unit_amount: item.price * 100 
             },
             quantity: item.quantity
         }));
+        
         // const params = {
         //     submit_type: "pay",
         //     mode: "payment",
