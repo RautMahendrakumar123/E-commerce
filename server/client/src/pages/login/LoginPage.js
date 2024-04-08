@@ -28,7 +28,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/login`, formData)
+      const response = await axios.post(`https://e-commerce-jr9j.onrender.com/api/v1/login`, formData)
       if (response) {
         localStorage.setItem('token',response.data.token)
         if(response.data){

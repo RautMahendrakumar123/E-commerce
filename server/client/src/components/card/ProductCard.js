@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
     <div className='card-container'>
             <div className='img-container'>
               <Link to={`/singlepost/${product._id}`} >
-                <img src={`${process.env.REACT_APP_SERVER_URL}/uploads/${product.image}`} alt={product.productname} />
+                <img src={`https://e-commerce-jr9j.onrender.com/uploads/${product.image}`} alt={product.productname} />
               </Link>
             </div>
             <div className='text-container'>

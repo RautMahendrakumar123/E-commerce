@@ -11,7 +11,7 @@ const Search = () => {
     const dispatch = useDispatch()
 
     const fetchProduct = async(value)=>{
-       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/products`)
+       const response = await axios.get(`https://e-commerce-jr9j.onrender.com/api/v1/products`)
        if(response && response.data && response.data.products){
         const result = response.data.products.filter((product)=>{
             return value && product && product.productname && product.productname.toLowerCase().includes(value.toLowerCase());

@@ -10,7 +10,7 @@ const Product = ({ data }) => {
   const handleProductDelete = async(productId)=>{
     console.log(productId)
     try {
-      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/product/delete/${productId}`)
+      await axios.delete(`https://e-commerce-jr9j.onrender.com/api/v1/product/delete/${productId}`)
       console.log('product deleted')
       toast.success('product deleted')
     } catch (error) {

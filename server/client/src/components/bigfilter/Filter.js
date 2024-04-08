@@ -23,7 +23,7 @@ const Filter = () => {
     
     const setClick = async (categoryName) => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/products/${categoryName}`);
+            const response = await axios.get(`https://e-commerce-jr9j.onrender.com/api/v1/products/${categoryName}`);
             dispatch(addFilterProduct(response.data));
             navigate('/filter-result');
         } catch (error) {
