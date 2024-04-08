@@ -65,7 +65,7 @@ console.log(formData)
         formDataToSend.append('category', formData.category);
         formDataToSend.append('special', formData.special);
         try {
-            const response = await axios.put(`http://localhost:5000/api/v1/product/update/${id}`, formDataToSend);
+            const response = await axios.put(`https://e-commerce-jr9j.onrender.com/api/v1/product/update/${id}`, formDataToSend);
             console.log('Product updated:', response.data);
             toast.success('product updated')
             navigate('/dashboard/getproducts')

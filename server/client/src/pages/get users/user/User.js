@@ -22,7 +22,7 @@ useEffect(()=>{
 
   return (
     <div className='userContainer'>
-      <div className='imgContainer'><img src={`http://localhost:5000/uploads/${image}`} alt='image' />
+      <div className='imgContainer'><img src={`https://e-commerce-jr9j.onrender.com/uploads/${image}`} alt='image' />
       </div>
       <div>{name}</div>
       <div>{contact}</div>

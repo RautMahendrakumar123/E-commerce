@@ -46,7 +46,7 @@ const Cartpage = () => {
             cart_data.map((prod) => (
               <div className='cart-product' key={prod._id}>
                 <div className='cart-img-container'>
-                  <img src={`http://localhost:5000/uploads/${prod.image}`} alt={prod.name} />
+                  <img src={`https://e-commerce-jr9j.onrender.com/uploads/${prod.image}`} alt={prod.name} />
                 </div>
                 <div className='cart-info'>
                   <div>{prod.name}</div>

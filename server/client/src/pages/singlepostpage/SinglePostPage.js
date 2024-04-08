@@ -48,7 +48,7 @@ const SinglePostPage = () => {
     <div className='main-container'>
       <div className='left-container'>
         <div className='img-container-singlepost'>
-          <img src={`http://localhost:5000/uploads/${data.image}`} alt={data.productname} />
+          <img src={`https://e-commerce-jr9j.onrender.com/uploads/${data.image}`} alt={data.productname} />
         </div>
       </div>
       <div className='right-container'>

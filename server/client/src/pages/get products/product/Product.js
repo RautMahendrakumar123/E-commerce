@@ -21,7 +21,7 @@ const Product = ({ data }) => {
 
   return (
     <div className="product">
-      <img src={`http://localhost:5000/uploads/${data.image}`} alt="Product" />
+      <img src={`https://e-commerce-jr9j.onrender.com/uploads/${data.image}`} alt="Product" />
       <div className="product-info">
         <div>{data.productname}</div>
         <div>{data.category}</div>
