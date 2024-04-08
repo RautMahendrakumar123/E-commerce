@@ -24,7 +24,7 @@ const Cartpage = () => {
   const handlePayment = async () => {
     try {
       const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
-      const res = await axios.post('http://localhost:5000/api/v1/create-checkout-session', cart_data);
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/create-checkout-session`, cart_data);
 
       if (res.status === 200) {
         toast.info('Redirecting to the payment gateway...');

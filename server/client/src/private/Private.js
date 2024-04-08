@@ -9,7 +9,7 @@ const Private = () => {
     useEffect(() => {
         const authCheck = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/v1/user-auth', {
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/user-auth`, {
                     headers: {
                         Authorization: token
                     }

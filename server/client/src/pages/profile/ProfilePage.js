@@ -16,7 +16,7 @@ const ProfilePage = () => {
       const id = decode.userId
 
       const getUser = async ()=>{
-        const response = await axios.get(`http://localhost:5000/api/v1/getuser/${id}`)
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/getuser/${id}`)
         setUser(response.data)
       }
       getUser()

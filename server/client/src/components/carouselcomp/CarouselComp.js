@@ -11,7 +11,7 @@ const CarouselComp = () => {
   useEffect(() => {
     const FetchSpecialProduct = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/products/special/true')
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/products/special/true`)
         setSpecialProducts(response.data)
       } catch (error) {
         console.log(error)

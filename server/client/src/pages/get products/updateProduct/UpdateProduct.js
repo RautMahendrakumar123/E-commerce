@@ -21,7 +21,7 @@ const UpdateProduct = () => {
     useEffect(() => {
         const getProductById = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/v1/product/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/product/${id}`);
                 const { productname, image, desc, price, category, special } = response.data;
                 setFormData({
                     ...formData,

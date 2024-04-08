@@ -7,7 +7,7 @@ const User = ({userdata}) => {
 
   const handleDelete = async (userId) => {
     try {
-        const response = await axios.delete(`http://localhost:5000/api/v1/deleteuser/${userId}`);
+        const response = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/deleteuser/${userId}`);
         console.log('User deleted:', response.data);
     } catch (error) {
         // Handle error

@@ -9,7 +9,7 @@ const GetAllProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/allProducts')
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/allProducts`)
         setProducts(response.data.products)
       } catch (error) {
         console.log(error)

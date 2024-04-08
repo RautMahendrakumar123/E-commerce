@@ -9,7 +9,7 @@ const GetAllUsers = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/getUsers')
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/getUsers`)
         if (response) {
           setUsers(response.data)
         }

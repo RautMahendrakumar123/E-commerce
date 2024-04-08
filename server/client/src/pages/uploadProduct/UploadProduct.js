@@ -42,7 +42,7 @@ const UploadProduct = () => {
         formDataToSend.append('category',formData.category)
         formDataToSend.append('special',formData.special)
         try {
-            const response = await axios.post('http://localhost:5000/api/v1/upload',formDataToSend,{
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/upload`,formDataToSend,{
                 headers: {
                     'Content-Type': 'multipart/form-data',
                   },
