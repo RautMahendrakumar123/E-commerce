@@ -17,7 +17,7 @@ const Allproduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/products?page=${currentPage}&limit=${pageSize}`);
+        const response = await axios.get(`https://e-commerce-jr9j.onrender.com/api/v1/products?page=${currentPage}&limit=${pageSize}`);
         if(response) {
           dispatch(setProduct(response.data.products))
           setProducts(response.data.products);
