@@ -26,7 +26,6 @@ const Search = () => {
     }
 
     dispatch(addSearchProduct(searchProducts))
-    console.log(searchProducts)
     return (
         <>
             <form className='search-form'>
